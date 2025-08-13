@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Scheduler</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4285f4">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📱 SMM Scheduler</h1>
+            <p>Schedule posts for TikTok, Instagram & YouTube</p>
+        </header>
+
+        <div class="auth-section" id="authSection">
+            <h2>Connect Your Accounts</h2>
+            <div class="social-buttons">
+                <button class="social-btn tiktok" onclick="connectAccount('tiktok')">
+                    📱 Connect TikTok
+                </button>
+                <button class="social-btn instagram" onclick="connectAccount('instagram')">
+                    📷 Connect Instagram
+                </button>
+                <button class="social-btn youtube" onclick="connectAccount('youtube')">
+                    📺 Connect YouTube
+                </button>
+            </div>
+        </div>
+
+        <div class="main-app" id="mainApp" style="display: none;">
+            <nav class="tab-nav">
+                <button class="tab-btn active" onclick="showTab('schedule')">Schedule</button>
+                <button class="tab-btn" onclick="showTab('posts')">My Posts</button>
+                <button class="tab-btn" onclick="showTab('settings')">Settings</button>
+            </nav>
+
+            <div class="tab-content" id="scheduleTab">
+                <div class="post-form">
+                    <h3>Create New Post</h3>
+                    <textarea id="postContent" placeholder="What's on your mind?"></textarea>
+                    
+                    <div class="media-upload">
+                        <input type="file" id="mediaFile" accept="image/*,video/*">
+                        <label for="mediaFile">📎 Add Media</label>
+                    </div>
+
+                    <div class="platform-select">
+                        <h4>Select Platforms:</h4>
+                        <label><input type="checkbox" value="tiktok"> TikTok</label>
+                        <label><input type="checkbox" value="instagram"> Instagram</label>
+                        <label><input type="checkbox" value="youtube"> YouTube</label>
+                    </div>
+
+                    <div class="schedule-options">
+                        <h4>Schedule Options:</h4>
+                        <label>
+                            <input type="radio" name="scheduleType" value="now" checked> Post Now
+                        </label>
+                        <label>
+                            <input type="radio" name="scheduleType" value="later"> Schedule for Later
+                        </label>
+                        <div class="datetime-picker" id="datetimePicker" style="display: none;">
+                            <input type="datetime-local" id="scheduleTime">
+                        </div>
+                    </div>
+
+                    <button class="post-btn" onclick="createPost()">📤 Schedule Post</button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="postsTab" style="display: none;">
+                <h3>Scheduled Posts</h3>
+                <div id="postsList"></div>
+            </div>
+
+            <div class="tab-content" id="settingsTab" style="display: none;">
+                <h3>Settings</h3>
+                <div class="settings-group">
+                    <h4>Auto-Schedule Settings</h4>
+                    <label>
+                        <input type="checkbox" id="autoSchedule"> Enable Auto-Schedule
+                    </label>
+                    <div class="time-slots">
+                        <p>Best posting times:</p>
+                        <input type="time" placeholder="Morning slot"> 
+                        <input type="time" placeholder="Evening slot">
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <h4>Connected Accounts</h4>
+                    <div id="connectedAccounts"></div>
+                </div>
+                
+                <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
