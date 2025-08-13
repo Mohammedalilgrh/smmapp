@@ -1,2 +1,10 @@
-flask 
-gunicorn
+flask==2.0.3
+flask-cors==4.0.0
+flask-sqlalchemy==3.1.1
+gunicorn==21.2.0
+psycopg2-binary==2.9.9
+python-dotenv==1.0.0
+click==8.1.7
+werkzeug==2.0.3
+setuptools==68.2.2
+wheel==0.41.3
